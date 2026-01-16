@@ -43,11 +43,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    padding: 18px;
+    overflow-x: hidden;
     transition: 0.4s;
 }
 
-/* ===== RETRO LOADING SCREEN ===== */
+/* ===== LOADING SCREEN ===== */
 .loading {
     position: fixed;
     inset: 0;
@@ -61,18 +62,12 @@ body {
     animation: hideLoader 2.5s forwards;
 }
 
-.loading-box {
-    text-align: center;
-}
-
 .loading-bar {
     width: 200px;
     height: 14px;
     border: 2px solid #fff;
     margin-top: 10px;
-    position: relative;
 }
-
 .loading-fill {
     height: 100%;
     width: 0;
@@ -80,70 +75,56 @@ body {
     animation: load 2s forwards;
 }
 
-@keyframes load {
-    to { width: 100%; }
-}
-
+@keyframes load { to { width: 100%; } }
 @keyframes hideLoader {
     90% { opacity: 1; }
     100% { opacity: 0; visibility: hidden; }
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== BOUNCE ON SCROLL ===== */
+.profile-card {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: all 0.6s ease;
+}
+
+.profile-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== FLOAT ===== */
 @keyframes float {
     0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-}
-
-@keyframes sparkle {
-    0%,100% { opacity: 0.3; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes cloudMove {
-    0% { transform: translateX(-30px); }
-    50% { transform: translateX(30px); }
-    100% { transform: translateX(-30px); }
+    50% { transform: translateY(-10px); }
 }
 
 /* ===== CLOUDS ===== */
 .cloud {
     position: absolute;
-    font-size: 42px;
-    opacity: 0.35;
-    animation: cloudMove 10s ease-in-out infinite;
+    font-size: 38px;
+    opacity: 0.3;
 }
-
-.c1 { top: 5%; left: 5%; }
-.c2 { top: 15%; right: 10%; animation-delay: 2s; }
-.c3 { top: 30%; left: 15%; animation-delay: 4s; }
-.c4 { bottom: 30%; right: 12%; animation-delay: 6s; }
-.c5 { bottom: 15%; left: 8%; animation-delay: 8s; }
-.c6 { bottom: 5%; right: 5%; animation-delay: 10s; }
+.c1 { top: 6%; left: 6%; }
+.c2 { bottom: 8%; right: 8%; }
 
 /* ===== PIXEL STARS ===== */
 .pixel-star {
     position: absolute;
-    font-size: 12px;
+    font-size: 11px;
     font-family: monospace;
-    animation: sparkle 3s infinite;
+    opacity: 0.6;
 }
+.ps1 { top: 20%; left: 20%; }
+.ps2 { bottom: 20%; right: 20%; }
 
-.ps1 { top: 8%; left: 25%; }
-.ps2 { top: 12%; right: 22%; animation-delay: 1s; }
-.ps3 { top: 40%; left: 10%; animation-delay: 2s; }
-.ps4 { top: 45%; right: 15%; animation-delay: 1.5s; }
-.ps5 { bottom: 25%; left: 18%; animation-delay: 0.5s; }
-.ps6 { bottom: 18%; right: 20%; animation-delay: 2.5s; }
-.ps7 { bottom: 10%; left: 35%; animation-delay: 1.8s; }
-
-/* ===== PROFILE CARD ===== */
+/* ===== CARD ===== */
 .profile-card {
     background: var(--card-bg);
     width: 100%;
     max-width: 420px;
-    padding: 30px;
-    border-radius: 36px;
+    padding: 26px 22px;
+    border-radius: 30px;
     text-align: center;
     box-shadow: 0 22px 40px rgba(0,0,0,0.18);
     position: relative;
@@ -151,60 +132,52 @@ body {
     z-index: 5;
 }
 
-.profile-card::before {
-    content: "💗";
-    position: absolute;
-    top: -12px;
-    left: -12px;
-    font-size: 26px;
-}
-
-.profile-card::after {
-    content: "🎮";
-    position: absolute;
-    bottom: -12px;
-    right: -12px;
-    font-size: 26px;
-}
-
 /* ===== IMAGE ===== */
 .profile-card img {
-    width: 130px;
-    height: 130px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     border: 4px solid var(--accent);
     object-fit: cover;
 }
 
 /* ===== TEXT ===== */
-h1 { font-size: 22px; color: var(--text-main); }
-.title { font-size: 14px; color: var(--text-sub); }
-.gamer-tag { font-size: 13px; color: var(--accent); margin: 10px 0; }
+h1 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: var(--text-main);
+}
+.title {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+.gamer-tag {
+    font-size: 12px;
+    color: var(--accent);
+    margin: 6px 0 12px;
+}
 
 .bio {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-main);
-    margin-bottom: 16px;
-    line-height: 1.6;
+    line-height: 1.5;
+    margin-bottom: 14px;
 }
 
 /* ===== INFO ===== */
 .info {
     background: var(--soft-box);
-    border-radius: 18px;
-    padding: 15px;
+    border-radius: 16px;
+    padding: 12px;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
 }
+.info p { margin-bottom: 6px; }
+.info i { color: var(--accent); margin-right: 6px; }
 
-.info i {
-    color: var(--accent);
-    margin-right: 8px;
-}
-
-/* ===== SOCIAL (FIXED ALIGNMENT) ===== */
+/* ===== SOCIAL ===== */
 .social-links {
-    margin-top: 18px;
+    margin-top: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,40 +185,59 @@ h1 { font-size: 22px; color: var(--text-main); }
 }
 
 .social-links a {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
     color: #fff;
+    font-size: 20px;
     transition: 0.3s;
 }
 
+.social-links a:hover {
+    transform: scale(1.15);
+}
+
 .facebook { background: #bde0fe; }
-.instagram { background: linear-gradient(45deg, #feda75, #d62976, #962fbf); }
+.instagram { background: linear-gradient(45deg,#feda75,#d62976,#962fbf); }
 .tiktok { background: #cdb4db; }
 
-.social-links a:hover {
-    transform: scale(1.2) rotate(12deg);
+/* ===== STICKY SOCIAL (MOBILE) ===== */
+@media (max-width: 480px) {
+    .social-links {
+        position: sticky;
+        bottom: 12px;
+        background: rgba(255,255,255,0.8);
+        backdrop-filter: blur(10px);
+        padding: 10px 14px;
+        border-radius: 30px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        z-index: 20;
+    }
+
+    body.dark .social-links {
+        background: rgba(47,49,71,0.85);
+    }
 }
 
 /* ===== DARK MODE BUTTON ===== */
 .toggle {
     position: absolute;
-    top: 14px;
-    right: 16px;
+    top: 12px;
+    right: 14px;
     border: none;
     background: var(--soft-box);
     border-radius: 20px;
-    padding: 6px 10px;
+    padding: 5px 9px;
     cursor: pointer;
 }
 
 /* ===== FOOTER ===== */
 .footer {
-    margin-top: 16px;
-    font-size: 12px;
+    margin-top: 14px;
+    font-size: 11px;
     color: var(--text-sub);
 }
 </style>
@@ -253,37 +245,26 @@ h1 { font-size: 22px; color: var(--text-main); }
 
 <body>
 
-<!-- LOADING SCREEN -->
+<!-- LOADING -->
 <div class="loading">
-    <div class="loading-box">
-        <div>Loading Profile...</div>
+    <div>
+        Loading Profile...
         <div class="loading-bar">
             <div class="loading-fill"></div>
         </div>
     </div>
 </div>
 
-<!-- CLOUDS -->
+<!-- BACKGROUND -->
 <div class="cloud c1">☁️</div>
 <div class="cloud c2">☁️</div>
-<div class="cloud c3">☁️</div>
-<div class="cloud c4">☁️</div>
-<div class="cloud c5">☁️</div>
-<div class="cloud c6">☁️</div>
-
-<!-- PIXEL STARS -->
 <div class="pixel-star ps1">✦</div>
 <div class="pixel-star ps2">✧</div>
-<div class="pixel-star ps3">✦</div>
-<div class="pixel-star ps4">✧</div>
-<div class="pixel-star ps5">✦</div>
-<div class="pixel-star ps6">✧</div>
-<div class="pixel-star ps7">✦</div>
 
 <div class="profile-card">
     <button class="toggle" onclick="document.body.classList.toggle('dark')">🌙</button>
 
-    <img src="profile.jpg" alt="Profile Picture">
+    <img src="profile.jpg" alt="Profile">
     <h1>Alyssa R. Sarraga</h1>
     <div class="title">BS Information Technology</div>
     <div class="gamer-tag">🎮 Gamer • Designer • Coder</div>
@@ -313,6 +294,18 @@ h1 { font-size: 22px; color: var(--text-main); }
 
     <div class="footer">© 2026 Alyssa R. Sarraga 💗</div>
 </div>
+
+<script>
+const card = document.querySelector('.profile-card');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            card.classList.add('show');
+        }
+    });
+});
+observer.observe(card);
+</script>
 
 </body>
 </html>
