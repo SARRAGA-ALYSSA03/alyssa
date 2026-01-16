@@ -2,143 +2,196 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
- <style>
-    body {
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+<style>
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ===== PROFILE CARD ===== */
+.profile-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 420px;
+    padding: 28px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 18px 30px rgba(0,0,0,0.15);
+}
+
+/* ===== PROFILE IMAGE ===== */
+.profile-card img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #cdb4db;
+    margin-bottom: 12px;
+}
+
+/* ===== TEXT ===== */
+h1 {
+    font-size: 22px;
+    color: #4a4a4a;
+}
+
+.title {
+    font-size: 14px;
+    color: #8d99ae;
+    margin-bottom: 14px;
+}
+
+/* ===== BIO ===== */
+.bio {
+    font-size: 14px;
+    color: #6c757d;
+    margin: 14px 0 18px;
+    line-height: 1.6;
+}
+
+/* ===== INFO SECTION ===== */
+.info {
+    background: #f8f9ff;
+    border-radius: 14px;
+    padding: 15px;
+    text-align: left;
+    font-size: 14px;
+    color: #555;
+}
+
+.info p {
+    margin-bottom: 8px;
+}
+
+.info i {
+    color: #b5838d;
+    margin-right: 8px;
+}
+
+/* ===== EXTRA DETAILS ===== */
+.extra {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ===== SOCIAL LINKS ===== */
+.social-links {
+    margin-top: 22px;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 8px;
+    font-size: 18px;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+/* Pastel Social Colors */
+.facebook { background: #bde0fe; }
+.instagram { background: #ffc8dd; }
+.tiktok { background: #cdb4db; }
+
+.social-links a:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #adb5bd;
+}
+
+/* ===== MOBILE SMALL SCREENS ===== */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 20px;
     }
 
     .profile-card {
-        background: #ffffff;
-        width: 380px;
-        padding: 30px;
-        border-radius: 20px;
-        text-align: center;
-        box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+        padding: 22px;
     }
 
     .profile-card img {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #cdb4db;
+        width: 115px;
+        height: 115px;
     }
-
-    h1 {
-        margin-top: 15px;
-        color: #4a4a4a;
-    }
-
-    .title {
-        font-size: 14px;
-        color: #8d99ae;
-        margin-bottom: 10px;
-    }
-
-    .bio {
-        font-size: 14px;
-        color: #6c757d;
-        margin: 15px 0;
-        line-height: 1.6;
-    }
-
-    .info {
-        text-align: left;
-        margin-top: 15px;
-        font-size: 14px;
-        color: #555;
-    }
-
-    .info p {
-        margin: 6px 0;
-    }
-
-    .info i {
-        color: #b5838d;
-        margin-right: 8px;
-    }
-
-    .social-links {
-        margin-top: 22px;
-    }
-
-    .social-links a {
-        text-decoration: none;
-        color: #fff;
-        margin: 0 8px;
-        font-size: 18px;
-        width: 42px;
-        height: 42px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        transition: 0.3s ease;
-    }
-
-    /* Pastel Social Colors */
-    .facebook { background: #bde0fe; }
-    .instagram { background: #ffc8dd; }
-    .tiktok { background: #cdb4db; }
-
-    .social-links a:hover {
-        transform: scale(1.15);
-        opacity: 0.85;
-    }
-
-    .footer {
-        margin-top: 20px;
-        font-size: 12px;
-        color: #adb5bd;
-    }
+}
 </style>
 </head>
 
-    <div class="profile-card">
-        <img src="profile.jpg" alt="Profile Picture">
+<body>
 
-        <h1>Alyssa R. Sarraga</h1>
-        <div class="title">Information Technology Student</div>
+<div class="profile-card">
+    <img src="profile.jpg" alt="Profile Picture">
 
-        <div class="bio">
-            Hi! I am a passionate student who enjoys learning web development,
-            designing simple interfaces, and exploring new technologies.
-        </div>
+    <h1>Alyssa R. Sarraga</h1>
+    <div class="title">Bachelor of Science in Information Technology</div>
 
-        <div class="info">
-            <p><i class="fas fa-graduation-cap"></i> Course: Bachelor Of Science Information Technology</p>
-            <p><i class="fas fa-code"></i> Skills: HTML, CSS, JavaScript</p>
-            <p><i class="fas fa-heart"></i> Interests: Gaming, Designing, Coding, Networking</p>
-        </div>
-
-        <div class="social-links">
-            <a href="https://facebook.com/alyssarsarraga" class="facebook" target="_blank">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-
-            <a href="https://instagram.com/prsia_" class="instagram" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
-
-            <a href="https://tiktok.com/@persiaqq" class="tiktok" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
-        </div>
-
-        <div class="footer">
-            © 2026 My Profile
-        </div>
+    <div class="bio">
+        Hello! I am a motivated IT student who enjoys building simple websites,
+        designing clean user interfaces, and continuously learning new
+        technologies to improve my skills.
     </div>
+
+    <div class="info">
+        <p><i class="fas fa-graduation-cap"></i> Course: BS Information Technology</p>
+        <p><i class="fas fa-code"></i> Skills: HTML, CSS, JavaScript</p>
+        <p><i class="fas fa-network-wired"></i> Knowledge: Networking Basics</p>
+        <p><i class="fas fa-heart"></i> Interests: Gaming, Designing, Coding</p>
+    </div>
+
+    <div class="extra">
+        I aim to grow as a future IT professional by gaining hands-on experience
+        in web development and networking while contributing creative ideas to
+        team projects.
+    </div>
+
+    <div class="social-links">
+        <a href="https://facebook.com/alyssarsarraga" class="facebook" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/prsia_" class="instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@persiaqq" class="tiktok" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2026 Alyssa R. Sarraga
+    </div>
+</div>
 
 </body>
 </html>
