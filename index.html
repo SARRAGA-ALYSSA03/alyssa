@@ -3,35 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 40px;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .profile {
-            background: white;
+
+        .profile-card {
+            background: #fff;
+            width: 380px;
             padding: 30px;
-            max-width: 400px;
-            margin: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
         }
-        img {
-            width: 120px;
+
+        .profile-card img {
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #764ba2;
+        }
+
+        h1 {
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .title {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #555;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .info {
+            text-align: left;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .info p {
+            margin: 6px 0;
+        }
+
+        .info i {
+            color: #764ba2;
+            margin-right: 8px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: white;
+            margin: 0 8px;
+            font-size: 18px;
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .facebook { background: #1877f2; }
+        .instagram { background: #e1306c; }
+        .tiktok { background: #000; }
+
+        .social-links a:hover {
+            transform: scale(1.15);
+            opacity: 0.9;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 
-    <div class="profile">
-        <img src="https://via.placeholder.com/120" alt="Profile Picture">
+    <div class="profile-card">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture">
+
         <h1>Your Name</h1>
-        <p><strong>Course:</strong> Computer Engineering Technology</p>
-        <p><strong>Skills:</strong> HTML, CSS, JavaScript</p>
-        <p><strong>Hobby:</strong> Gaming & Designing</p>
+        <div class="title">Computer Engineering Technology Student</div>
+
+        <div class="bio">
+            Hi! I am a passionate student who enjoys learning web development,
+            designing simple interfaces, and exploring new technologies.
+        </div>
+
+        <div class="info">
+            <p><i class="fas fa-graduation-cap"></i> Course: Computer Engineering Technology</p>
+            <p><i class="fas fa-code"></i> Skills: HTML, CSS, JavaScript</p>
+            <p><i class="fas fa-heart"></i> Interests: Gaming, Designing</p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://facebook.com/yourprofile" class="facebook" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://instagram.com/yourprofile" class="instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="https://tiktok.com/@yourprofile" class="tiktok" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
+
+        <div class="footer">
+            © 2026 My Profile
+        </div>
     </div>
 
 </body>
