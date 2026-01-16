@@ -1,112 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile</title>
 
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* ===== RESET ===== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+    --bg-gradient: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    --card-bg: #ffffff;
+    --text-main: #4a4a4a;
+    --text-sub: #8d99ae;
+    --accent: #cdb4db;
+    --soft-box: #f8f9ff;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+    --bg-gradient: linear-gradient(135deg, #2b2d42, #3a3d5c);
+    --card-bg: #2f3147;
+    --text-main: #f1f1f1;
+    --text-sub: #cfcfe8;
+    --accent: #ffc8dd;
+    --soft-box: #3c3f5c;
 }
 
 /* ===== BODY ===== */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    background: var(--bg-gradient);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: 0.4s;
 }
 
-/* ===== PROFILE CARD ===== */
+/* ===== FLOATING ANIMATION ===== */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* ===== CARD ===== */
 .profile-card {
-    background: #ffffff;
+    background: var(--card-bg);
     width: 100%;
     max-width: 420px;
     padding: 30px;
-    border-radius: 30px;
+    border-radius: 32px;
     text-align: center;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.18);
     position: relative;
-    box-shadow: 0 20px 35px rgba(0,0,0,0.15);
-    overflow: hidden;
+    animation: float 4s ease-in-out infinite;
+    transition: 0.4s;
 }
 
-/* ===== CUTE DECORATIVE EDGES ===== */
+/* ===== KAWAII CORNERS ===== */
 .profile-card::before,
 .profile-card::after {
-    content: "";
+    content: "💗";
     position: absolute;
-    width: 120px;
-    height: 120px;
-    background: #fde2e4;
-    border-radius: 50%;
-    z-index: 0;
+    font-size: 28px;
 }
 
 .profile-card::before {
-    top: -50px;
-    left: -50px;
+    top: -10px;
+    left: -10px;
 }
 
 .profile-card::after {
-    bottom: -50px;
-    right: -50px;
-    background: #e2eafc;
+    content: "⭐";
+    bottom: -10px;
+    right: -10px;
 }
 
-/* ===== CONTENT ABOVE DECOR ===== */
-.profile-card * {
-    position: relative;
-    z-index: 1;
-}
-
-/* ===== PROFILE IMAGE ===== */
+/* ===== IMAGE ===== */
 .profile-card img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #cdb4db;
+    border: 4px solid var(--accent);
     margin-bottom: 12px;
 }
 
 /* ===== TEXT ===== */
 h1 {
     font-size: 22px;
-    color: #4a4a4a;
+    color: var(--text-main);
 }
 
 .title {
     font-size: 14px;
-    color: #8d99ae;
+    color: var(--text-sub);
     margin-bottom: 14px;
 }
 
-/* ===== BIO ===== */
 .bio {
     font-size: 14px;
-    color: #6c757d;
-    margin: 14px 0 18px;
+    color: var(--text-main);
     line-height: 1.6;
+    margin-bottom: 16px;
 }
 
-/* ===== INFO BOX ===== */
+/* ===== INFO ===== */
 .info {
-    background: #f8f9ff;
+    background: var(--soft-box);
     border-radius: 18px;
     padding: 15px;
     text-align: left;
     font-size: 14px;
-    color: #555;
+    color: var(--text-main);
 }
 
 .info p {
@@ -114,26 +132,18 @@ h1 {
 }
 
 .info i {
-    color: #b5838d;
+    color: var(--accent);
     margin-right: 8px;
 }
 
-/* ===== EXTRA TEXT ===== */
-.extra {
-    margin-top: 14px;
-    font-size: 13px;
-    color: #666;
-    line-height: 1.6;
-}
-
-/* ===== SOCIAL LINKS ===== */
+/* ===== SOCIAL ===== */
 .social-links {
     margin-top: 22px;
 }
 
 .social-links a {
     text-decoration: none;
-    color: #fff;
+    color: white;
     margin: 0 8px;
     font-size: 18px;
     width: 44px;
@@ -142,37 +152,41 @@ h1 {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
-/* Pastel Social Colors */
 .facebook { background: #bde0fe; }
-.instagram { background: #ffc8dd; }
+.instagram { background: linear-gradient(45deg, #feda75, #d62976, #962fbf); }
 .tiktok { background: #cdb4db; }
 
 .social-links a:hover {
-    transform: scale(1.15) rotate(6deg);
-    opacity: 0.9;
+    transform: scale(1.2) rotate(10deg);
+}
+
+/* ===== DARK MODE BUTTON ===== */
+.toggle {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: var(--soft-box);
+    border: none;
+    border-radius: 20px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 12px;
 }
 
 /* ===== FOOTER ===== */
 .footer {
-    margin-top: 20px;
+    margin-top: 18px;
     font-size: 12px;
-    color: #adb5bd;
+    color: var(--text-sub);
 }
 
 /* ===== SMALL PHONES ===== */
 @media (max-width: 360px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    .profile-card {
-        padding: 22px;
-        border-radius: 26px;
-    }
-
+    h1 { font-size: 20px; }
+    .profile-card { padding: 22px; }
     .profile-card img {
         width: 115px;
         height: 115px;
@@ -184,14 +198,18 @@ h1 {
 <body>
 
 <div class="profile-card">
+    <button class="toggle" onclick="document.body.classList.toggle('dark')">
+        🌙 Dark
+    </button>
+
     <img src="profile.jpg" alt="Profile Picture">
 
     <h1>Alyssa R. Sarraga</h1>
-    <div class="title">Bachelor of Science in Information Technology</div>
+    <div class="title">BS Information Technology Student</div>
 
     <div class="bio">
-        Hello! I am a motivated IT student who loves creating cute and clean
-        designs, learning web development, and improving my technical skills.
+        Hi! I’m an IT student who loves cute UI designs, web development,
+        and learning new technologies while having fun coding 💕
     </div>
 
     <div class="info">
@@ -199,11 +217,6 @@ h1 {
         <p><i class="fas fa-code"></i> Skills: HTML, CSS, JavaScript</p>
         <p><i class="fas fa-network-wired"></i> Knowledge: Networking Basics</p>
         <p><i class="fas fa-heart"></i> Interests: Gaming, Designing, Coding</p>
-    </div>
-
-    <div class="extra">
-        Aspiring IT professional who aims to combine creativity and technology
-        in building user-friendly applications and websites.
     </div>
 
     <div class="social-links">
@@ -219,7 +232,7 @@ h1 {
     </div>
 
     <div class="footer">
-        © 2026 Alyssa R. Sarraga
+        © 2026 Alyssa R. Sarraga 💗
     </div>
 </div>
 
