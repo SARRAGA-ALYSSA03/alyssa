@@ -48,7 +48,7 @@ body {
     transition: 0.4s;
 }
 
-/* ===== LOADING SCREEN ===== */
+/* ===== LOADING ===== */
 .loading {
     position: fixed;
     inset: 0;
@@ -61,7 +61,10 @@ body {
     z-index: 999;
     animation: hideLoader 2.5s forwards;
 }
-
+@keyframes hideLoader {
+    90% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
 .loading-bar {
     width: 200px;
     height: 14px;
@@ -74,12 +77,7 @@ body {
     background: #fbc2eb;
     animation: load 2s forwards;
 }
-
 @keyframes load { to { width: 100%; } }
-@keyframes hideLoader {
-    90% { opacity: 1; }
-    100% { opacity: 0; visibility: hidden; }
-}
 
 /* ===== BOUNCE ON SCROLL ===== */
 .profile-card {
@@ -87,7 +85,6 @@ body {
     transform: translateY(25px);
     transition: all 0.6s ease;
 }
-
 .profile-card.show {
     opacity: 1;
     transform: translateY(0);
@@ -102,21 +99,45 @@ body {
 /* ===== CLOUDS ===== */
 .cloud {
     position: absolute;
-    font-size: 38px;
-    opacity: 0.3;
+    font-size: 40px;
+    opacity: 0.35;
+    animation: cloudMove 12s ease-in-out infinite;
 }
-.c1 { top: 6%; left: 6%; }
-.c2 { bottom: 8%; right: 8%; }
+@keyframes cloudMove {
+    0% { transform: translateX(-25px); }
+    50% { transform: translateX(25px); }
+    100% { transform: translateX(-25px); }
+}
+
+.c1 { top: 4%; left: 5%; }
+.c2 { top: 12%; right: 8%; animation-delay: 2s; }
+.c3 { top: 28%; left: 10%; animation-delay: 4s; }
+.c4 { bottom: 28%; right: 10%; animation-delay: 6s; }
+.c5 { bottom: 12%; left: 6%; animation-delay: 8s; }
+.c6 { bottom: 4%; right: 6%; animation-delay: 10s; }
 
 /* ===== PIXEL STARS ===== */
 .pixel-star {
     position: absolute;
-    font-size: 11px;
+    font-size: 12px;
     font-family: monospace;
     opacity: 0.6;
+    animation: sparkle 3s infinite;
 }
-.ps1 { top: 20%; left: 20%; }
-.ps2 { bottom: 20%; right: 20%; }
+@keyframes sparkle {
+    0%,100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.ps1 { top: 10%; left: 22%; }
+.ps2 { top: 18%; right: 25%; animation-delay: 1s; }
+.ps3 { top: 35%; left: 8%; animation-delay: 2s; }
+.ps4 { top: 40%; right: 12%; animation-delay: 1.5s; }
+.ps5 { bottom: 30%; left: 18%; animation-delay: 0.5s; }
+.ps6 { bottom: 22%; right: 22%; animation-delay: 2.5s; }
+.ps7 { bottom: 10%; left: 35%; animation-delay: 1.8s; }
+.ps8 { bottom: 5%; right: 40%; animation-delay: 0.8s; }
+.ps9 { top: 5%; right: 45%; animation-delay: 1.2s; }
 
 /* ===== CARD ===== */
 .profile-card {
@@ -216,7 +237,6 @@ h1 {
         box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         z-index: 20;
     }
-
     body.dark .social-links {
         background: rgba(47,49,71,0.85);
     }
@@ -255,11 +275,24 @@ h1 {
     </div>
 </div>
 
-<!-- BACKGROUND -->
+<!-- CLOUDS -->
 <div class="cloud c1">☁️</div>
 <div class="cloud c2">☁️</div>
+<div class="cloud c3">☁️</div>
+<div class="cloud c4">☁️</div>
+<div class="cloud c5">☁️</div>
+<div class="cloud c6">☁️</div>
+
+<!-- PIXEL STARS -->
 <div class="pixel-star ps1">✦</div>
 <div class="pixel-star ps2">✧</div>
+<div class="pixel-star ps3">✦</div>
+<div class="pixel-star ps4">✧</div>
+<div class="pixel-star ps5">✦</div>
+<div class="pixel-star ps6">✧</div>
+<div class="pixel-star ps7">✦</div>
+<div class="pixel-star ps8">✧</div>
+<div class="pixel-star ps9">✦</div>
 
 <div class="profile-card">
     <button class="toggle" onclick="document.body.classList.toggle('dark')">🌙</button>
