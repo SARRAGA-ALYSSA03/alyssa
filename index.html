@@ -32,10 +32,41 @@ body {
     background: #ffffff;
     width: 100%;
     max-width: 420px;
-    padding: 28px;
-    border-radius: 22px;
+    padding: 30px;
+    border-radius: 30px;
     text-align: center;
-    box-shadow: 0 18px 30px rgba(0,0,0,0.15);
+    position: relative;
+    box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
+
+/* ===== CUTE DECORATIVE EDGES ===== */
+.profile-card::before,
+.profile-card::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #fde2e4;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.profile-card::before {
+    top: -50px;
+    left: -50px;
+}
+
+.profile-card::after {
+    bottom: -50px;
+    right: -50px;
+    background: #e2eafc;
+}
+
+/* ===== CONTENT ABOVE DECOR ===== */
+.profile-card * {
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== PROFILE IMAGE ===== */
@@ -68,10 +99,10 @@ h1 {
     line-height: 1.6;
 }
 
-/* ===== INFO SECTION ===== */
+/* ===== INFO BOX ===== */
 .info {
     background: #f8f9ff;
-    border-radius: 14px;
+    border-radius: 18px;
     padding: 15px;
     text-align: left;
     font-size: 14px;
@@ -87,9 +118,9 @@ h1 {
     margin-right: 8px;
 }
 
-/* ===== EXTRA DETAILS ===== */
+/* ===== EXTRA TEXT ===== */
 .extra {
-    margin-top: 15px;
+    margin-top: 14px;
     font-size: 13px;
     color: #666;
     line-height: 1.6;
@@ -120,8 +151,8 @@ h1 {
 .tiktok { background: #cdb4db; }
 
 .social-links a:hover {
-    transform: scale(1.15);
-    opacity: 0.85;
+    transform: scale(1.15) rotate(6deg);
+    opacity: 0.9;
 }
 
 /* ===== FOOTER ===== */
@@ -131,7 +162,7 @@ h1 {
     color: #adb5bd;
 }
 
-/* ===== MOBILE SMALL SCREENS ===== */
+/* ===== SMALL PHONES ===== */
 @media (max-width: 360px) {
     h1 {
         font-size: 20px;
@@ -139,6 +170,7 @@ h1 {
 
     .profile-card {
         padding: 22px;
+        border-radius: 26px;
     }
 
     .profile-card img {
@@ -158,9 +190,8 @@ h1 {
     <div class="title">Bachelor of Science in Information Technology</div>
 
     <div class="bio">
-        Hello! I am a motivated IT student who enjoys building simple websites,
-        designing clean user interfaces, and continuously learning new
-        technologies to improve my skills.
+        Hello! I am a motivated IT student who loves creating cute and clean
+        designs, learning web development, and improving my technical skills.
     </div>
 
     <div class="info">
@@ -171,9 +202,8 @@ h1 {
     </div>
 
     <div class="extra">
-        I aim to grow as a future IT professional by gaining hands-on experience
-        in web development and networking while contributing creative ideas to
-        team projects.
+        Aspiring IT professional who aims to combine creativity and technology
+        in building user-friendly applications and websites.
     </div>
 
     <div class="social-links">
