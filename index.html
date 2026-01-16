@@ -43,16 +43,56 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    transition: 0.4s;
     overflow: hidden;
+    transition: 0.4s;
+}
+
+/* ===== RETRO LOADING SCREEN ===== */
+.loading {
+    position: fixed;
+    inset: 0;
+    background: #1b1b2f;
+    color: #fff;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    animation: hideLoader 2.5s forwards;
+}
+
+.loading-box {
+    text-align: center;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 14px;
+    border: 2px solid #fff;
+    margin-top: 10px;
+    position: relative;
+}
+
+.loading-fill {
+    height: 100%;
+    width: 0;
+    background: #fbc2eb;
+    animation: load 2s forwards;
+}
+
+@keyframes load {
+    to { width: 100%; }
+}
+
+@keyframes hideLoader {
+    90% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes float {
-    0% { transform: translateY(0); }
+    0%,100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
 }
 
 @keyframes sparkle {
@@ -60,11 +100,42 @@ body {
     50% { opacity: 1; transform: scale(1); }
 }
 
-@keyframes cloud {
-    0% { transform: translateX(-20px); }
-    50% { transform: translateX(20px); }
-    100% { transform: translateX(-20px); }
+@keyframes cloudMove {
+    0% { transform: translateX(-30px); }
+    50% { transform: translateX(30px); }
+    100% { transform: translateX(-30px); }
 }
+
+/* ===== CLOUDS ===== */
+.cloud {
+    position: absolute;
+    font-size: 42px;
+    opacity: 0.35;
+    animation: cloudMove 10s ease-in-out infinite;
+}
+
+.c1 { top: 5%; left: 5%; }
+.c2 { top: 15%; right: 10%; animation-delay: 2s; }
+.c3 { top: 30%; left: 15%; animation-delay: 4s; }
+.c4 { bottom: 30%; right: 12%; animation-delay: 6s; }
+.c5 { bottom: 15%; left: 8%; animation-delay: 8s; }
+.c6 { bottom: 5%; right: 5%; animation-delay: 10s; }
+
+/* ===== PIXEL STARS ===== */
+.pixel-star {
+    position: absolute;
+    font-size: 12px;
+    font-family: monospace;
+    animation: sparkle 3s infinite;
+}
+
+.ps1 { top: 8%; left: 25%; }
+.ps2 { top: 12%; right: 22%; animation-delay: 1s; }
+.ps3 { top: 40%; left: 10%; animation-delay: 2s; }
+.ps4 { top: 45%; right: 15%; animation-delay: 1.5s; }
+.ps5 { bottom: 25%; left: 18%; animation-delay: 0.5s; }
+.ps6 { bottom: 18%; right: 20%; animation-delay: 2.5s; }
+.ps7 { bottom: 10%; left: 35%; animation-delay: 1.8s; }
 
 /* ===== PROFILE CARD ===== */
 .profile-card {
@@ -72,15 +143,14 @@ body {
     width: 100%;
     max-width: 420px;
     padding: 30px;
-    border-radius: 34px;
+    border-radius: 36px;
     text-align: center;
-    position: relative;
     box-shadow: 0 22px 40px rgba(0,0,0,0.18);
+    position: relative;
     animation: float 4s ease-in-out infinite;
     z-index: 5;
 }
 
-/* ===== CUTE CORNERS ===== */
 .profile-card::before {
     content: "💗";
     position: absolute;
@@ -88,6 +158,7 @@ body {
     left: -12px;
     font-size: 26px;
 }
+
 .profile-card::after {
     content: "🎮";
     position: absolute;
@@ -96,62 +167,25 @@ body {
     font-size: 26px;
 }
 
-/* ===== PIXEL STARS ===== */
-.pixel-star {
-    position: absolute;
-    font-size: 12px;
-    font-family: monospace;
-    animation: sparkle 3s infinite;
-    opacity: 0.8;
-}
-
-.ps1 { top: 8%; left: 20%; animation-delay: 0s; }
-.ps2 { top: 15%; right: 18%; animation-delay: 1s; }
-.ps3 { bottom: 18%; left: 22%; animation-delay: 2s; }
-.ps4 { bottom: 10%; right: 25%; animation-delay: 1.5s; }
-
-/* ===== CLOUDS ===== */
-.cloud {
-    position: absolute;
-    font-size: 40px;
-    opacity: 0.35;
-    animation: cloud 8s ease-in-out infinite;
-}
-.c1 { top: 10%; left: 5%; }
-.c2 { bottom: 15%; right: 5%; animation-delay: 4s; }
-
 /* ===== IMAGE ===== */
 .profile-card img {
     width: 130px;
     height: 130px;
     border-radius: 50%;
-    object-fit: cover;
     border: 4px solid var(--accent);
-    margin-bottom: 12px;
+    object-fit: cover;
 }
 
 /* ===== TEXT ===== */
-h1 {
-    font-size: 22px;
-    color: var(--text-main);
-}
-.title {
-    font-size: 14px;
-    color: var(--text-sub);
-    margin-bottom: 8px;
-}
-.gamer-tag {
-    font-size: 13px;
-    color: var(--accent);
-    margin-bottom: 14px;
-}
+h1 { font-size: 22px; color: var(--text-main); }
+.title { font-size: 14px; color: var(--text-sub); }
+.gamer-tag { font-size: 13px; color: var(--accent); margin: 10px 0; }
 
-/* ===== BIO ===== */
 .bio {
     font-size: 14px;
     color: var(--text-main);
-    line-height: 1.6;
     margin-bottom: 16px;
+    line-height: 1.6;
 }
 
 /* ===== INFO ===== */
@@ -161,28 +195,26 @@ h1 {
     padding: 15px;
     text-align: left;
     font-size: 14px;
-    color: var(--text-main);
 }
-.info p { margin-bottom: 8px; }
-.info i { color: var(--accent); margin-right: 8px; }
+
+.info i {
+    color: var(--accent);
+    margin-right: 8px;
+}
 
 /* ===== SOCIAL ===== */
-.social-links {
-    margin-top: 22px;
-}
 .social-links a {
-    text-decoration: none;
-    color: white;
-    margin: 0 8px;
-    font-size: 18px;
     width: 44px;
     height: 44px;
+    margin: 0 8px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    color: #fff;
     transition: 0.3s;
 }
+
 .facebook { background: #bde0fe; }
 .instagram { background: linear-gradient(45deg, #feda75, #d62976, #962fbf); }
 .tiktok { background: #cdb4db; }
@@ -196,65 +228,68 @@ h1 {
     position: absolute;
     top: 14px;
     right: 16px;
-    background: var(--soft-box);
     border: none;
+    background: var(--soft-box);
     border-radius: 20px;
     padding: 6px 10px;
     cursor: pointer;
-    font-size: 12px;
 }
 
 /* ===== FOOTER ===== */
 .footer {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: 12px;
     color: var(--text-sub);
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 360px) {
-    h1 { font-size: 20px; }
-    .profile-card { padding: 22px; }
-    .profile-card img {
-        width: 115px;
-        height: 115px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Clouds -->
+<!-- LOADING SCREEN -->
+<div class="loading">
+    <div class="loading-box">
+        <div>Loading Profile...</div>
+        <div class="loading-bar">
+            <div class="loading-fill"></div>
+        </div>
+    </div>
+</div>
+
+<!-- CLOUDS -->
 <div class="cloud c1">☁️</div>
 <div class="cloud c2">☁️</div>
+<div class="cloud c3">☁️</div>
+<div class="cloud c4">☁️</div>
+<div class="cloud c5">☁️</div>
+<div class="cloud c6">☁️</div>
 
-<!-- Pixel Stars -->
+<!-- PIXEL STARS -->
 <div class="pixel-star ps1">✦</div>
 <div class="pixel-star ps2">✧</div>
 <div class="pixel-star ps3">✦</div>
 <div class="pixel-star ps4">✧</div>
+<div class="pixel-star ps5">✦</div>
+<div class="pixel-star ps6">✧</div>
+<div class="pixel-star ps7">✦</div>
 
 <div class="profile-card">
-
     <button class="toggle" onclick="document.body.classList.toggle('dark')">🌙</button>
 
-    <img src="profile.jpg" alt="Profile Picture">
-
+    <img src="profile.jpg">
     <h1>Alyssa R. Sarraga</h1>
-    <div class="title">BS Information Technology Student</div>
+    <div class="title">BS Information Technology</div>
     <div class="gamer-tag">🎮 Gamer • Designer • Coder</div>
 
     <div class="bio">
-        I love kawaii pixel aesthetics, gaming, and building fun web projects
-        while learning new technologies ✨⭐
+        I love kawaii pixel designs, gaming, and building fun
+        web projects while learning new technologies ⭐☁️
     </div>
 
     <div class="info">
-        <p><i class="fas fa-graduation-cap"></i> Course: BS Information Technology</p>
-        <p><i class="fas fa-code"></i> Skills: HTML, CSS, JavaScript</p>
-        <p><i class="fas fa-network-wired"></i> Knowledge: Networking Basics</p>
-        <p><i class="fas fa-gamepad"></i> Hobbies: Gaming, UI Design</p>
+        <p><i class="fas fa-graduation-cap"></i> BS Information Technology</p>
+        <p><i class="fas fa-code"></i> HTML, CSS, JavaScript</p>
+        <p><i class="fas fa-gamepad"></i> Gaming & UI Design</p>
     </div>
 
     <div class="social-links">
@@ -269,9 +304,7 @@ h1 {
         </a>
     </div>
 
-    <div class="footer">
-        © 2026 Alyssa R. Sarraga ⭐💗
-    </div>
+    <div class="footer">© 2026 Alyssa R. Sarraga 💗</div>
 </div>
 
 </body>
